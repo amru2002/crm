@@ -1,0 +1,38 @@
+
+from django.db import models
+
+
+class Employees(models.Model):
+    name=models.CharField(max_length=200)
+    department=models.CharField(max_length=200)
+    salary=models.PositiveIntegerField()
+    email=models.EmailField(unique=True)
+    age=models.PositiveIntegerField()
+    contact=models.CharField(max_length=12,null=True)
+
+orm query for creating a new object
+>Employees.objects.create(name="hari",department="hr",salary=56000,email="hari@gmail.com",age=20,contact="test")
+
+
+orm query for fetching all records
+>qs=Employees.objects.all()
+
+orm query for fetching specific employee details
+>qs=Employees.objects.get(id=1)
+
+orm query for filtering employee records
+>qs=Employees.objects.filter(department="hr")
+orm query greater than
+>qs=Employees.objects.filter(salary__gte=50000)
+ 
+ orm query less than
+>qs=Employees.objects.filter(salary__lte=50000)
+
+
+__gte = >=
+__lte = <=
+__gt  =>
+__lt = <
+
+orm qury for excluding an object
+>qs=Employees.objects.exclude(department="hr")
